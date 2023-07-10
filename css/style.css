@@ -323,6 +323,7 @@ table{
 	#object-window{
 		top: 18vh;
 		font-size: 1.1em;
+		width: 98%;
 	}
 
 	img{
@@ -376,6 +377,7 @@ table{
 	#object-window{
 		top: 18vh;
 		font-size: 1.1em;
+		width: 98%;
 	}
 
 	#coin-window{
