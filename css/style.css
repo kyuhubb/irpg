@@ -349,6 +349,10 @@ table{
 	#coin-window{
 		top: 20vh;
 	}
+
+	.okbutton{
+		font-size: 1em;
+	}
 }
 
 @media (max-width:343px){
@@ -378,6 +382,10 @@ table{
 
 	#objectname{
 		font-size: 0.8em!important;
+	}
+
+	.okbutton{
+		font-size: 1em;
 	}
 
 	#coin-window{
