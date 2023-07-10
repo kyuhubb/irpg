@@ -7,6 +7,7 @@
 	<audio id='sfx' src='sound/sell.mp3'></audio>
 	<audio id='trash' src='sound/trash.mp3'></audio>
 	<title>D&D</title>
+	<input type="file" style="display: none;" id='file-sel'>
 </head>
 <body oncontextmenu="return false">
 	<!-- fenêtre création objet -->
@@ -77,7 +78,7 @@
 	<!-- fin de la fenêtre-->
 
 	<div class='grid-content'>
-		<center><button class='long-button' onclick='save()'>Save</button><button class='long-button' onclick='load()'>Load</button></center>
+		<center><button class='long-button' onclick='save()'>Save</button><button class='long-button' onclick="document.getElementById('file-sel').click()">Load</button></center>
 		<div>
 			<div class="title-grid">
 				<div>

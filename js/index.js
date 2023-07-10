@@ -76,68 +76,6 @@ function newobject(player){
 	tri();
 }
 
-function load(){
-	var filename = prompt("File's name ?");
-	if(filename == ""){
-		return
-	}
-	var script = document.createElement("script");
-  	script.src = filename+".js";
-  	document.head.appendChild(script);
-  	script.addEventListener('load', function() { 	  
-		document.getElementById('player1').innerHTML = player1_name;
-		document.getElementById('player2').innerHTML = player2_name;
-		player1_money = loadplayer1_money;
-		player2_money = loadplayer2_money;
-		document.getElementById('totalgold-player1').innerHTML = player1_money;
-		document.getElementById('totalgold-player2').innerHTML = player2_money;
-		var obj = "";
-		var type = "";
-		var rarity = "";
-		var value = "";
-		var player = "";
-		var currobject = [];
-		var y = 0;
-		var newDiv = "";
-		var thisobject = "";
-		for(x=0; x < all_objects.length; x++){
-			y = x+1;
-			currobject = all_objects[x].split("$");
-			obj = currobject[0];
-			type = parseInt(currobject[1]);
-			rarity = currobject[2];
-			value = parseInt(currobject[3]);
-			player = currobject[4];
-			newDiv = document.createElement("div");
-			newDiv.className = "object";
-			newDiv.id = "object"+currobject[5];
-			newDiv.player = player;
-			newDiv.value = value;
-			newDiv.innerHTML = "<table><tr><td class='td-type'><img id='img-"+currobject[5]+"' src='img/"+type+".png'></td><td class='td-name'>"+obj+"</td><td class='td-rarity'><img src='img/"+rarity+".png'></td><td class='td-value'><span id='object"+currobject[5]+"-value'>"+value+"</span><img src='img/Gold.png'></td><td id='sell-object-"+currobject[5]+"' class='td-sell'><button class='sell-button' onclick = 'sell(object"+currobject[5]+")'></button></td><td class='td-del'><button onclick = 'del(object"+currobject[5]+",true)' class='delete-button'></button></td></tr></table>";
-			newDiv.desc = obj;
-			newDiv.num = currobject[5];
-			divName = "p"+player+"-inv";
-			document.getElementById(divName).appendChild(newDiv);
-			document.getElementById('object-window').style.display = "none";
-			objectwin = false;
-			const thisid = 'object'+currobject[5];
-			document.getElementById(thisid).addEventListener('contextmenu', (event) => {
-				if(document.getElementById(thisid).player == 1){
-					document.getElementById("p2-inv").appendChild(eval(thisid));
-					thisobject = document.getElementById(thisid);
-					thisobject.player = 2;
-				}else{
-					document.getElementById("p1-inv").appendChild(eval(thisid));
-					thisobject = document.getElementById(thisid);
-					thisobject.player = 1;
-				}
-			});
-			n = Number(currobject[5])+1;
-		}
-		tri();
-	});
-}
-
 function del(object, sound){
 	var check = [];
 	for(x=0; x < all_objects.length; x++){
@@ -398,3 +336,74 @@ function trinext(type){
 		}
 	}	
 }
+
+function load(e){
+	var file = e.target.files[0];
+	var filename = file.name;
+	if (!file) {
+	  return
+	}
+	var reader = new FileReader();
+	reader.onload = function(e){
+		var content = e.target.result;
+		var script = document.createElement("script");
+  		script.text = content;
+  		document.head.appendChild(script);
+		document.getElementById('player1').innerHTML = player1_name;
+		document.getElementById('player2').innerHTML = player2_name;
+		player1_money = loadplayer1_money;
+		player2_money = loadplayer2_money;
+		document.getElementById('totalgold-player1').innerHTML = player1_money;
+		document.getElementById('totalgold-player2').innerHTML = player2_money;
+		var obj = "";
+		var type = "";
+		var rarity = "";
+		var value = "";
+		var player = "";
+		var currobject = [];
+		var y = 0;
+		var newDiv = "";
+		var thisobject = "";
+		for(x=0; x < all_objects.length; x++){
+			y = x+1;
+			currobject = all_objects[x].split("$");
+			obj = currobject[0];
+			type = parseInt(currobject[1]);
+			rarity = currobject[2];
+			value = parseInt(currobject[3]);
+			player = currobject[4];
+			newDiv = document.createElement("div");
+			newDiv.className = "object";
+			newDiv.id = "object"+currobject[5];
+			newDiv.player = player;
+			newDiv.value = value;
+			newDiv.innerHTML = "<table><tr><td class='td-type'><img id='img-"+currobject[5]+"' src='img/"+type+".png'></td><td class='td-name'>"+obj+"</td><td class='td-rarity'><img src='img/"+rarity+".png'></td><td class='td-value'><span id='object"+currobject[5]+"-value'>"+value+"</span><img src='img/Gold.png'></td><td id='sell-object-"+currobject[5]+"' class='td-sell'><button class='sell-button' onclick = 'sell(object"+currobject[5]+")'></button></td><td class='td-del'><button onclick = 'del(object"+currobject[5]+",true)' class='delete-button'></button></td></tr></table>";
+			newDiv.desc = obj;
+			newDiv.num = currobject[5];
+			divName = "p"+player+"-inv";
+			document.getElementById(divName).appendChild(newDiv);
+			document.getElementById('object-window').style.display = "none";
+			objectwin = false;
+			const thisid = 'object'+currobject[5];
+			document.getElementById(thisid).addEventListener('contextmenu', (event) => {
+				if(document.getElementById(thisid).player == 1){
+					document.getElementById("p2-inv").appendChild(eval(thisid));
+					thisobject = document.getElementById(thisid);
+					thisobject.player = 2;
+				}else{
+					document.getElementById("p1-inv").appendChild(eval(thisid));
+					thisobject = document.getElementById(thisid);
+					thisobject.player = 1;
+				}
+			});
+			n = Number(currobject[5])+1;
+		}
+		tri();
+	}
+	reader.readAsText(file);
+	null;
+	// content = contenu du fichier
+	// filename = nom du fichier
+}
+
+document.getElementById('file-sel').addEventListener('change', load, false);
