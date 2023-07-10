@@ -322,6 +322,7 @@ table{
 
 	#object-window{
 		top: 18vh;
+		font-size: 1.1em;
 	}
 
 	img{
@@ -340,10 +341,6 @@ table{
 
 	.object{
 		overflow-x: auto;
-	}
-
-	#objectname{
-		font-size: 0.8em!important;
 	}
 
 	#coin-window{
@@ -378,14 +375,7 @@ table{
 
 	#object-window{
 		top: 18vh;
-	}
-
-	#objectname{
-		font-size: 0.8em!important;
-	}
-
-	.okbutton{
-		font-size: 1em;
+		font-size: 1.1em;
 	}
 
 	#coin-window{
