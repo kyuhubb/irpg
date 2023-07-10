@@ -157,10 +157,10 @@ h2{
 	text-align: center;
 	border-radius: 4px;
 	position: absolute;
-	left: 35vw;
-	top: 30vh;
+	width: 100%;
+	top: 22vh;
+	left: 0;
 	z-index: 1;
-	width: 400px;
 	background-color: rgba(238, 188, 29,0.85);
 }
 
@@ -265,6 +265,10 @@ table{
 	#object-window{
 		top: 20vh;
 	}
+
+	#coin-window{
+		top: 20vh;
+	}
 }
 
 @media (min-width:562px) and (max-width:763px){
@@ -295,13 +299,17 @@ table{
 	#object-window{
 		top: 18vh;
 	}
+
+	#coin-window{
+		top: 20vh;
+	}
 }
 
 @media (min-width:344px) and (max-width:561px){
 	body{
 		background-size: 300%;
 		font-size: 0.6em;
-		grid-template-columns: repeat(auto-fit, minmax(100%, 0%));
+		grid-template-columns: repeat(auto-fit, minmax(101%, 0%));
 	}
 
 	img{
@@ -333,13 +341,21 @@ table{
 	.object{
 		overflow-x: auto;
 	}
+
+	#objectname{
+		font-size: 0.8em!important;
+	}
+
+	#coin-window{
+		top: 20vh;
+	}
 }
 
 @media (max-width:343px){
 	body{
 		background: black;
 		font-size: 0.6em;
-		grid-template-columns: repeat(auto-fit, minmax(100%, 0%));
+		grid-template-columns: repeat(auto-fit, minmax(101%, 0%));
 	}
 
 	img{
@@ -358,5 +374,13 @@ table{
 
 	#object-window{
 		top: 18vh;
+	}
+
+	#objectname{
+		font-size: 0.8em!important;
+	}
+
+	#coin-window{
+		top: 20vh;
 	}
 }
