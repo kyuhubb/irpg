@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<audio id='sfx' src='sound/sell.mp3'></audio>
+	<audio id='trash' src='sound/trash.mp3'></audio>
+	<title>D&D</title>
+</head>
+<body oncontextmenu="return false">
+	<!-- fenêtre création objet -->
+		<div id=object-window>
+			<table>
+				<tr>
+					<td>Nom</td>
+					<td>Type</td>
+					<td>Rareté</td>
+				</tr>
+				<tr>
+					<td><input id='objectname'></td>
+					<td>
+						<select id='type' name="type">
+							<option value="1" selected>Nourriture</option>
+							<option value="2">Boisson</option>
+							<option value="3">Plante</option>
+							<option value="4">Matériel</option>
+							<option value="5">Drop</option>
+							<option value="6">Vêtement</option>
+							<option value="7">Livre</option>
+							<option value="8">Meuble</option>
+							<option value="9">Potion</option>
+							<option value="10">Outil</option>
+							<option value="11">Armure</option>
+							<option value="12">Arme</option>
+							<option value="13">Parchemin</option>
+							<option value="14">Objet magique</option>
+							<option value="15">Objet précieux</option>
+							<option value="16">Propriété</option>
+						</select>
+					</td>
+					<td>
+						<select id='rarity' name="rarity">
+							<option value="brown">Déchet</option>
+							<option value="green" selected>Commun</option>
+							<option value="blue">Rare</option>
+							<option value="pink">Epique</option>
+							<option value="purple">Légendaire</option>
+						</select>
+					</td>
+					<td>
+						<button class='button okbutton' id="create-button">OK</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	<!-- fin fenêtre création objet -->
+
+
+
+	<!-- fenêtre gestion argent -->
+	<div id='coin-window'>
+		<div class="title-grid2">
+			<div id='player-name-box'>
+				<h2 id='player-name'>Player 1</h2>
+			</div>
+			<div id='gold-section'>
+				<span id='coin-player'>0</span> <img id='goldgold' src='img/Gold.png'>
+			</div>
+		</div>
+			<div>
+				<input id='coin-num' autofocus>
+				<button class='button' id='okbutton'>OK</button>
+			</div>
+		</div>
+	</div>
+	<!-- fin de la fenêtre-->
+
+	<div class='grid-content'>
+		<center><button class='long-button' onclick='save()'>Save</button><button class='long-button' onclick='load()'>Load</button></center>
+		<div>
+			<div class="title-grid">
+				<div>
+					<h2 id='player1' onclick="setname(1)">Player 1</h2>
+				</div>
+				<div id='gold-section'>
+					<span id='totalgold-player1'>0</span> <img class='coin-image' onclick='showmoneybox(1)' src='img/Gold.png'>
+				</div>
+			</div>
+			<button class='add' onclick='objectwindow(1)'>+</button>
+		</div>
+		<div id='p1-inv'></div>
+		</div>
+	</div>
+	<div class='grid-content'>
+		<center><button class='long-button'>‏‏‎ ‎</button><button class='long-button'>‏‏‎ ‎</button></center>
+		<div>
+			<div class="title-grid">
+				<div>
+					<h2 id='player2' onclick="setname(2)">Player 2</h2>
+				</div>
+				<div id='gold-section'>
+					<span id='totalgold-player2'>0</span> <img class='coin-image' onclick='showmoneybox(2)' src='img/Gold.png'>
+				</div>
+			</div>
+			<button class='add' onclick='objectwindow(2)'>+</button>
+		</div>
+		<div id='p2-inv'></div>
+	</div>
+</body>
+</html>
+<script src='js/filesaver.js'></script>
+<script src='js/index.js'></script>
